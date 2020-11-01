@@ -1,0 +1,22 @@
+html {
+    height:100%;
+}
+
+body {
+    background: white url("images/background.gif");
+    font-family: 'Oswald', sans-serif !important;
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+}
+
+.col-auto {
+    border-radius: 25px;
+    display: block;
+    padding: 10px;
+    background-color: gray;
+    color: white;
+    font-size: 46px;
+}
