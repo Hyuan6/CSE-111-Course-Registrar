@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'LegacyRegistrationPage/development.css' %}">
+    <!-- <script src = "{% static 'LegacyRegistrationPage/development.js'%}"></script> -->
+    
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="https://mystudentrecord.ucmerced.edu/favicon.ico"/>
@@ -15,13 +17,76 @@
   <body>
     
     <div class = "container">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <a class="navbar-brand" href="#">CR++</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Course Registration</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Graduation Planner</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
         <div class="row h-100">
             <div class="col-sm-12 align-self-center">
                 <div class="col-auto w-50 mx-auto text-center">
-                    <span>Page In Development</span>
+                    <span>Users Ahead of You: <a id = "queueNumber"></a></span>
                 </div>
             </div>
+            
         </div>
     </div>
+
+    <div id = "audioController" class="text-center">
+      <div id="player"></div>
+          <img id = "playButton" onclick="toggleVideo();" src="{% static 'LegacyRegistrationPage/images/play-button.png' %}"/>
+    </div>
+
+    <script>
+    
+    document.getElementById("queueNumber").text = Math.floor((Math.random() * 1000) + 1);
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '1',
+        width: '1',
+        videoId: '5qap5aO4i9A',
+      });
+    }
+
+    var playEmbeddedVideo = true;
+
+    function toggleVideo(){
+        console.log("video toggled");
+        if(playEmbeddedVideo){
+            player.playVideo();
+            document.getElementById("playButton").src = "{% static 'LegacyRegistrationPage/images/pause-button.png' %}";
+        }else{
+            player.stopVideo();
+            document.getElementById("playButton").src = "{% static 'LegacyRegistrationPage/images/play-button.png' %}";
+        }
+        playEmbeddedVideo = !playEmbeddedVideo;
+    }
+    
+    </script>
+
   </body>
 </html>
