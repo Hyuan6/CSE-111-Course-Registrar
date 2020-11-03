@@ -1,5 +1,5 @@
 
-document.getElementById("queueNumber").text = Math.floor((Math.random() * 1000) + 1);
+document.getElementById("queueNumber").text = Math.floor((Math.random() * 100) + 1);
 
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -41,4 +41,23 @@ buttons.forEach(el => {
   });
 });
 
+var minutes = 1.5;
+
+function bannerCounter(){
+
+	var min = 1, max = 10;
+	var rand = Math.floor(Math.random() * (max - min + 1) + min);
+	var newVal = Math.max(parseInt(document.querySelector("#queueNumber").text) - rand, 0);
+	document.querySelector("#queueNumber").text = newVal;
+
+	if (newVal == 0){
+		window.location.href = "/LegReg/submit";
+	}
+
+	max = 30;
+	rand = Math.floor(Math.random() * (max - min + 1) + min);
+	setTimeout(bannerCounter, rand * 1000); //minutes * 60000 + 
+}
+
+bannerCounter();
 
