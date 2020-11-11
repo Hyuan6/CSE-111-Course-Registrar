@@ -50,13 +50,13 @@ function bannerCounter(){
 	var newVal = Math.max(parseInt(document.querySelector("#queueNumber").text) - rand, 0);
 	document.querySelector("#queueNumber").text = newVal;
 
-	if (newVal == 0){
-		window.location.href = "/LegReg/submit";
-	}
+	// if (newVal == 0){
+	// 	window.location.href = "/LegReg/submit";
+	// }
 
 	max = 30;
 	rand = Math.floor(Math.random() * (max - min + 1) + min);
-	setTimeout(bannerCounter, rand * 1000); //minutes * 60000 + 
+	setTimeout(bannerCounter, rand * 1000);
 }
 
 bannerCounter();
