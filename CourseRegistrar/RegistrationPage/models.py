@@ -17,6 +17,9 @@ class Student(models.Model):
     Class_Standing = models.CharField(max_length = 2, choices = YEAR_IN_SCHOOL_CHOICES)
     Phone_Number = models.CharField(max_length = 14)
 
+    def __str__(self):
+        return self.Username
+
 
 class Subject(models.Model):
     title = models.CharField(max_length = 40)
@@ -38,6 +41,11 @@ class Course(models.Model):
     Max_enrl = models.IntegerField()
     Act_enrl = models.IntegerField()
     Seats_avil = models.IntegerField()
+
+class rollcall(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    sid = models.IntegerField()
+
 
 
 class Requirments(models.Model):
