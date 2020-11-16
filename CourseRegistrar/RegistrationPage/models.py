@@ -43,6 +43,7 @@ class Course(models.Model):
     Seats_avil = models.IntegerField()
 
 class rollcall(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     sid = models.IntegerField()
 
