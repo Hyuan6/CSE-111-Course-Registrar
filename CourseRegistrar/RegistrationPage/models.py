@@ -45,7 +45,6 @@ class Course(models.Model):
 class Rollcall(models.Model):
     course = models.CharField(max_length = 15) # this field is cnum from Course
     student = models.IntegerField() # this field is student id from Student
-    sid = models.IntegerField()
 
 
 
