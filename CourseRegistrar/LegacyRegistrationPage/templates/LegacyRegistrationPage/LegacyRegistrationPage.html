@@ -1,0 +1,425 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <style type="text/css">
+        @charset "UTF-8";
+
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak,
+        .ng-hide:not(.ng-hide-animate) {
+            display: none !important;
+        }
+
+        ng\:form {
+            display: block;
+        }
+
+        .ng-animate-shim {
+            visibility: hidden;
+        }
+
+        .ng-anchor {
+            position: absolute;
+        }
+
+        .tabon {
+            PADDING-LEFT: 8px; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND-IMAGE: url("{% static 'LegacyRegistrationPage/images/web_tab_corner.gif' %}") ; COLOR: #ffffff; BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #003366
+        }
+
+        
+        BODY {
+            background-color: #FFFFFF;
+            color: black;
+            font-family: Verdana,Arial Narrow,  helvetica, sans-serif;
+            font-style: normal;
+            text-align: left;
+            /* BROWSER CONSIDERATION - Override browser settings for BODY margin */
+            margin-top: 0px;
+            margin-left: 1%;
+            margin-right: 2%;
+            /* background-image: url("{% static 'LegacyRegistrationPage/images/web_bg_app.jpg' %}"); */
+            background-repeat: no-repeat;
+        }
+
+        .taboff {
+            PADDING-LEFT: 8px;
+            FONT-WEIGHT: bold;
+            FONT-SIZE: 12px;
+            BACKGROUND-IMAGE: url("{% static 'LegacyRegistrationPage/images/web_tab_corner.gif' %}");
+            COLOR: #000000;
+            BACKGROUND-REPEAT: no-repeat;
+            BACKGROUND-COLOR: #cccccc
+        }
+
+        .tabdisable {
+            PADDING-LEFT: 8px;
+            FONT-WEIGHT: bold;
+            FONT-SIZE: 12px;
+            BACKGROUND-IMAGE: url("{% static 'LegacyRegistrationPage/images/web_tab_corner.gif' %}");
+            COLOR: #F2F2F2;
+            BACKGROUND-REPEAT: no-repeat;
+            BACKGROUND-COLOR: #cccccc
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" name="Cache-Control" content="no-cache">
+    <meta http-equiv="Cache-Control" name="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="{% static 'LegacyRegistrationPage/web_defaultapp.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'LegacyRegistrationPage/web_defaultprint.css' %}" type="text/css" media="print">
+    <link rel="shortcut icon" type="image/png" href="https://mystudentrecord.ucmerced.edu/favicon.ico"/>
+    <title>Add/Drop Classes: </title>
+    <meta http-equiv="Content-Script-Type" name="Default_Script_Language" content="text/javascript">
+    <script language="JavaScript" type="text/javascript">
+    // Hide JavaScript from older browsers
+        window.onunload = function () { submitcount = 0; }
+        var submitcount = 0;
+        function checkSubmit() {
+            if (submitcount == 0) {
+                submitcount++;
+                return true;
+            }
+            else {
+                alert("Your changes have already been submitted.");
+                return false;
+            }
+        }
+    //  End script hiding
+    </script>
+    <script language="JavaScript" type="text/javascript">
+    // Hide JavaScript from older browsers
+        //  Function to open a window
+        function windowOpen(window_url) {
+            helpWin = window.open(window_url, '', 'toolbar=yes,status=no,scrollbars=yes,menubar=yes,resizable=yes,directories=no,location=no,width=350,height=400');
+            if (document.images) {
+                if (helpWin) helpWin.focus()
+            }
+        }
+    //  End script hiding
+    </script>
+</head>
+
+<body>
+    <img id = "banner" src = "{% static 'LegacyRegistrationPage/images/web_bg_app.jpg' %}">
+    <div class="headerwrapperdiv">
+        <div class="headerlinksdiv">
+            <span class="pageheaderlinks2">
+                <map name="Module_Navigation_Links_H" title="Module Navigation Links">
+                    <p>
+                        <a href="#skip_Module_Navigation_Links_H"
+                            onmouseover="window.status='Skip Module Navigation Links'; return true"
+                            onmouseout="window.status=''; return true"
+                            onfocus="window.status='Skip Module Navigation Links'; return true"
+                            onblur="window.status=''; return true" class="skiplinks">Skip Module Navigation Links</a>
+                        <table class="plaintable" summary="This is main table for displaying Tab Items." width="100%"
+                            cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="pldefault">
+                                        <table class="plaintable" summary="This table displays Tab Items."
+                                            cellspacing="0" cellpadding="0" border="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="tabon" height="22">
+                                                        <a href="/pls/PROD/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu"
+                                                            onmouseover="window.status='Student'; return true"
+                                                            onmouseout="window.status=''; return true"
+                                                            onfocus="window.status='Student'; return true"
+                                                            onblur="window.status=''; return true">Student</a>
+                                                    </td>
+                                                    <td class="bgtabon" height="22" valign="top" align="right">
+                                                        <img src="{% static 'LegacyRegistrationPage/images/web_tab_corner_right.gif' %}"
+                                                            alt="Tab Corner Right" class="headerImg"
+                                                            title="Tab Corner Right" name="web_tab_corner_right"
+                                                            hspace="0" vspace="0" border="0" height="20" width="8">
+                                                    </td>
+                                                    <td class="taboff" height="22">
+                                                        <a href="/pls/PROD/twbkwbis.P_GenMenu?name=bmenu.P_FinAidMainMnu"
+                                                            onmouseover="window.status='Financial Aid'; return true"
+                                                            onmouseout="window.status=''; return true"
+                                                            onfocus="window.status='Financial Aid'; return true"
+                                                            onblur="window.status=''; return true">Financial Aid</a>
+                                                    </td>
+                                                    <td class="bgtaboff" height="22" valign="top" align="right">
+                                                        <img src="{% static 'LegacyRegistrationPage/images/web_tab_corner_right.gif' %}"
+                                                            alt="Tab Corner Right" class="headerImg"
+                                                            title="Tab Corner Right" name="web_tab_corner_right"
+                                                            hspace="0" vspace="0" border="0" height="20" width="8">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bgtabon" width="100%" colspan="2"><img src="{% static 'LegacyRegistrationPage/images/web_transparent.gif' %}"
+                                            alt="Transparent Image" class="headerImg" title="Transparent Image"
+                                            name="web_transparent" hspace="0" vspace="0" border="0" height="3"
+                                            width="10"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <a name="skip_Module_Navigation_Links_H"></a>
+                    </p>
+                </map></span></div>
+        <table class="plaintable" summary="This table displays Menu Items and Banner Search textbox." width="100%">
+            <tbody>
+                <tr>
+                    <td class="pldefault">
+                        <div class="headerlinksdiv2">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                Search
+                                <span class="fieldlabeltextinvisible"><label for="keyword_in_id"><span
+                                            class="fieldlabeltext">Search</span></label></span>
+                                <input type="text" name="KEYWRD_IN" size="20" maxlength="65" id="keyword_in_id">
+                                <input type="submit" value="Go">
+                            </form>
+                        </div>
+                    </td>
+                    <td class="pldefault">
+                        <p class="rightaligntext" p="">
+                            <span class="pageheaderlinks">
+                                <a href="/pls/PROD/twbkwbis.P_GenMenu?name=bmenu.P_RegMnu" class="submenulinktext2"
+                                    id="ssbbackurl">RETURN TO MENU</a>
+                                |
+                                <a href="/pls/PROD/twbksite.P_DispSiteMap?menu_name_in=bmenu.P_MainMnu&amp;depth_in=2&amp;columns_in=3"
+                                    accesskey="2" class="submenulinktext2">SITE MAP</a>
+                                |
+                                <a href="/pls/PROD/twbkfrmt.P_DispHelp?pagename_in=bwskfreg.P_AddDropCrse" accesskey="H"
+                                    onclick="popup = window.open('/pls/PROD/twbkfrmt.P_DispHelp?pagename_in=bwskfreg.P_AddDropCrse', 'PopupPage','height=500,width=450,scrollbars=yes,resizable=yes'); return false"
+                                    target="_blank" onmouseover="window.status='';  return true"
+                                    onmouseout="window.status=''; return true" onfocus="window.status='';  return true"
+                                    onblur="window.status=''; return true" class="submenulinktext2">HELP</a>
+                                |
+                                <a href="twbkwbis.P_Logout" accesskey="3" class="submenulinktext2">EXIT</a>
+                            </span>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagetitlediv">
+        <table class="plaintable" summary="This table displays title and static header displays." width="100%">
+            <tbody>
+                <tr>
+                    <td class="pldefault">
+                        <h2>Add/Drop Classes: </h2>
+                    </td>
+                    <td class="pldefault">
+                        &nbsp;
+                    </td>
+                    <td class="pldefault">
+                        <p class="rightaligntext" p="">
+                        </p>
+                        <div class="staticheaders">
+                            111111111 John Doe<br>
+                            Spring Semester 2021<br>
+                            Jan 01, 1970 12:00 am<br>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bg3" width="100%" colspan="3"><img src="{% static 'LegacyRegistrationPage/images/web_transparent.gif' %}"
+                            alt="Transparent Image" class="headerImg" title="Transparent Image" name="web_transparent"
+                            hspace="0" vspace="0" border="0" height="3" width="10"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a name="main_content"></a>
+    </div>
+    <div class="pagebodydiv">
+        <!--  ** END OF twbkwbis.P_OpenDoc **  -->
+        <br>
+        <form action="" method='post'>
+            {% csrf_token %}
+            <div class="infotextdiv">
+                <table class="infotexttable"
+                    summary="This layout table contains information that may be helpful in understanding the content and functionality of this page.  It could be a brief set of instructions, a description of error messages, or other special information.">
+                    <tbody>
+                        <tr>
+                            <td class="indefault"><img src="{% static 'LegacyRegistrationPage/images/twgginfo.gif' %}"
+                                    alt="Information" class="headerImg" title="Information" name="Info" hspace="0"
+                                    vspace="0" border="0" height="24" width="27"></td>
+                            <td class="indefault"><span class="infotext"> Students that select hybrid or in-person
+                                    courses agree to follow the University policy for face coverings and other physical
+                                    mitigation measures that reduce the transmission of COVID-19 while present in the
+                                    classroom and other University facilities. More information can be found here: <a
+                                        href="https://doyourpart.ucmerced.edu"
+                                        target="_blank">doyourpart.ucmerced.edu</a>
+
+                                    <p>
+                                        <font color="#FF0000">To add a class</font>, enter the Course Reference Number
+                                        (CRN) in the "Add Classes Worksheet" section. If you have already registered for
+                                        the semester, those classes will appear in the "Current Schedule" section.
+                                        Additional classes may be added in the "Add Classes Worksheet".
+                                    </p>
+                                    <p>
+                                        <font color="#FF0000">To drop a class</font>, use the options available in the
+                                        "Action" field drop down menu. If no options are listed in the "Action" field
+                                        then the class may not be dropped.
+                                    </p>
+                                    <p>
+                                        <font color="#FF0000">When add/drops are complete</font> click Submit Changes.
+                                        If you are unsure of which classes to add, go to <a
+                                            href="https://mystudentrecord.ucmerced.edu/pls/PROD/xhwschedule.p_selectsubject"
+                                            target="_blank">registrar.ucmerced.edu/go/schedule.</a>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p> NOTE: DO NOT USE THE CLASS SEARCH BUTTON BELOW TO SEARCH FOR CLASS SECTIONS! It
+                                        does not clearly show linked discussion or lab sections that go with lecture
+                                        sections. Instead use <a
+                                            href="https://mystudentrecord.ucmerced.edu/pls/PROD/xhwschedule.p_selectsubject"
+                                            target="_blank">registrar.ucmerced.edu/go/schedule.</a></p>
+                                    <p>Be aware of all add and drop deadlines each semester. For update information <a
+                                            href="http://registrar.ucmerced.edu/schedules/deadlines" target="_blank">see
+                                            the Office of the Registrar web site.</a></p>
+                                    <p>
+                                        Need extra help registering for classes? Go to <a
+                                            href="http://registrar.ucmerced.edu/registration-help-page"
+                                            target="_blank">the registration help web site.</a></p>
+                                    <p>
+                                        <font color="#FF0000">Error messages</font> could include time conflicts,
+                                        prerequisites, linking, instructor permission, etc. More information about error
+                                        messages and how to correct them can be found <a
+                                            href="http://registrar.ucmerced.edu/registration-help-page/registering-classes/registration-errors"
+                                            target="_blank">here.</a>
+                                    </p>
+                                    <p>We recommend you attempt to complete registration within two hours of your
+                                        registration start time to reduce the amount of registration activity occurring
+                                        throughout the day.
+                                    </p>
+                                    <p><b>***IMPORTANT REGISTRATION UPDATE - ELECTRONIC FORM SUBMISSION DURING
+                                            COVID-19***</b><br>
+                                        Given the move to remote instruction, you can now download forms you may need to
+                                        finalize your registration, complete the form and email out for approval via
+                                        your UC Merced email. More information can be found on the Registrar Website
+                                        <a href="https://registrar.ucmerced.edu/forms" target="_blank">see at
+                                            registrar.ucmerced.edu/forms.</a></p>
+                                </span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p></p>
+            </div>
+            <h3>Add Classes Worksheet</h3>
+            <table class="dataentrytable" summary="Add Classes Data Entry" width="100%">
+                <tbody>
+                    <tr>
+                        <td colspan="10" class="detitle" scope="colgroup"><acronym
+                                title="Course Reference Numbers">CRNs</acronym></td>
+                    </tr>
+                    <tr>
+                        <td class="dedefault">
+                            <label for="crn_id1"><span class="fieldlabeltextinvisible">CRN</span></label>
+                            <input type="text" name="CRN_1" size="6" maxlength="5" id="crn_id1">
+                        </td>
+                        <td class="dedefault">
+                            <label for="crn_id2"><span class="fieldlabeltextinvisible">CRN</span></label>
+                            <input type="text" name="CRN_2" size="6" maxlength="5" id="crn_id2">
+                        </td>
+                        <td class="dedefault">
+                            <label for="crn_id3"><span class="fieldlabeltextinvisible">CRN</span></label>
+                            <input type="text" name="CRN_3" size="6" maxlength="5" id="crn_id3">
+                        </td>
+                        <td class="dedefault">
+                            <label for="crn_id4"><span class="fieldlabeltextinvisible">CRN</span></label>
+                            <input type="text" name="CRN_4" size="6" maxlength="5" id="crn_id4">
+                        </td>
+                        <td class="dedefault">
+                            <label for="crn_id5"><span class="fieldlabeltextinvisible">CRN</span></label>
+                            <input type="text" name="CRN_5" size="6" maxlength="5" id="crn_id5">
+                        </td>
+                        <td class="dedefault">
+                            <label for="crn_id6"><span class="fieldlabeltextinvisible">CRN</span></label>
+                            <input type="text" name="CRN_6" size="6" maxlength="5" id="crn_id6">
+                        </td>
+                        <td class="dedefault">
+                            <label for="crn_id7"><span class="fieldlabeltextinvisible">CRN</span></label>
+                            <input type="text" name="CRN_7" size="6" maxlength="5" id="crn_id7">
+                        </td>
+                        <td class="dedefault">
+                            <label for="crn_id8"><span class="fieldlabeltextinvisible">CRN</span></label>
+                            <input type="text" name="CRN_8" size="6" maxlength="5" id="crn_id8">
+                        </td>
+                        <td class="dedefault">
+                            <label for="crn_id9"><span class="fieldlabeltextinvisible">CRN</span></label>
+                            <input type="text" name="CRN_9" size="6" maxlength="5" id="crn_id9">
+                        </td>
+                        <td class="dedefault">
+                            <label for="crn_id10"><span class="fieldlabeltextinvisible">CRN</span></label>
+                            <input type="text" name="CRN_10" size="6" maxlength="5" id="crn_id10">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+            <input type="submit" name="REG_BTN" value="Submit Changes">
+            <input type="submit" name="REG_BTN" value="Class Search">
+            <input type="reset" value="Reset">
+        </form>
+
+        <!--  ** START OF twbkwbis.P_CloseDoc **  -->
+        <table class="plaintable" summary="This is table displays line separator at end of the page." width="100%"
+            cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td class="bgtabon" width="100%" colspan="2"><img src="{% static 'LegacyRegistrationPage/images/web_transparent.gif' %}"
+                            alt="Transparent Image" class="headerImg" title="Transparent Image" name="web_transparent"
+                            hspace="0" vspace="0" border="0" height="3" width="10"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="#top" onmouseover="window.status='Skip to top of page'; return true"
+            onmouseout="window.status=''; return true" onfocus="window.status='Skip to top of page'; return true"
+            onblur="window.status=''; return true" class="skiplinks">Skip to top of page</a>
+    </div>
+    <div class="footerbeforediv">
+
+    </div>
+    <div class="footerlinksdiv">
+        <span class="pagefooterlinks">
+            <map name="Add/Drop_Classes:__Links_F" title="Add/Drop Classes:  Links">
+                <p>
+                    <a href="#skip_Add/Drop_Classes:__Links_F"
+                        onmouseover="window.status='Skip Add/Drop Classes:  Links'; return true"
+                        onmouseout="window.status=''; return true"
+                        onfocus="window.status='Skip Add/Drop Classes:  Links'; return true"
+                        onblur="window.status=''; return true" class="skiplinks">Skip Add/Drop Classes: Links</a>
+                </p>
+                <p>[ <a href="bwskcrse.P_CrseSchdDetl" onmouseover="window.status='Student Schedule'; return true"
+                        onmouseout="window.status=''; return true"
+                        onfocus="window.status='Student Schedule'; return true"
+                        onblur="window.status=''; return true">Student Schedule</a>
+                    | <a href="bwskfshd.P_CrseSchd" onmouseover="window.status='Schedule By Week'; return true"
+                        onmouseout="window.status=''; return true"
+                        onfocus="window.status='Schedule By Week'; return true"
+                        onblur="window.status=''; return true">Schedule By Week</a>
+                    | <a href="/pls/PROD/bwskoacc.P_ViewHold" onmouseover="window.status='View Holds'; return true"
+                        onmouseout="window.status=''; return true" onfocus="window.status='View Holds'; return true"
+                        onblur="window.status=''; return true">View Holds</a>
+                    | <a href="twbkwbis.P_GenMenu?name=bmenu.P_DarsMnu">MyAudit</a>
+                    ]
+
+                    <a name="skip_Add/Drop_Classes:__Links_F"></a>
+                </p>
+            </map></span></div>
+    <div class="pagefooterdiv">
+        <span class="releasetext">Release: 0.0.1</span>
+    </div>
+    <div class="banner_copyright"> <br>
+        <h5>© 2020 M&H and co.<br></h5>
+    </div>
+
+</body>
+
+</html>

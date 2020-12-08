@@ -25,13 +25,14 @@ SECRET_KEY = 'j+t^*lfa42xt$4dcbrmp__z@@i1-f-2(=g*r!1n^tyemg9znh0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'RegistrationPage.apps.RegistrationpageConfig',
+    'LegacyRegistrationPage.apps.LegacyregistrationpageConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -106,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
