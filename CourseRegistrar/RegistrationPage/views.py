@@ -8,4 +8,4 @@ def courseReg(request):
     return render(request, 'RegistrationPage/regPage.html')
 
 def gradPlan(request):
-    return render(request, 'RegistrationPage/gradPlan.html')
+    return render(request, 'RegistrationPage/development.html')
