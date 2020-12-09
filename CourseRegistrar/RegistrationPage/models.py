@@ -26,7 +26,7 @@ class Subject(models.Model):
 
 
 class Course(models.Model):
-    sub = models.CharField(max_length = 40) # this field is title from Subject
+    # this field is title from Subject
     crn = models.IntegerField()
     Instructor = models.CharField(max_length= 30)
     Title = models.CharField(max_length=20)
@@ -42,7 +42,7 @@ class Course(models.Model):
     Act_enrl = models.IntegerField()
     Seats_avil = models.IntegerField()
 
-class Rollcall(models.Model):
+class Roll(models.Model):
     course = models.CharField(max_length = 15) # this field is cnum from Course
     student = models.IntegerField() # this field is student id from Student
 

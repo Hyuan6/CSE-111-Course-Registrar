@@ -40,8 +40,8 @@ def insert_sub(conn, val):
 
 def insert_table(conn, x, cache):
     try:
-        sql = """INSERT INTO RegistrationPage_course(crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil, sub_id)
-                 values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) """
+        sql = """INSERT INTO RegistrationPage_course(crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil)
+                 values(?,?,?,?,?,?,?,?,?,?,?,?,?,?) """
         y =[]
         if(len(x) == 9):
             t = x[5]
@@ -61,8 +61,8 @@ def insert_table(conn, x, cache):
             Act_enrl = x[7]
             Seats_avil = x[8]
             sub_id = cnum.split("-")[0]
-            y = [crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil, sub_id]
-            conn.execute(sql,(crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil, sub_id))
+            y = [crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil]
+            conn.execute(sql,(crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil))
             conn.commit()
             print(f"adding: {x[0]}")
         
@@ -84,8 +84,8 @@ def insert_table(conn, x, cache):
             Act_enrl = x[len(x)-2]
             Seats_avil = x[len(x)-1]
             sub_id = cnum.split("-")[0]
-            y = [crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil, sub_id]
-            conn.execute(sql,(crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil, sub_id))
+            y = [crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil]
+            conn.execute(sql,(crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil))
             conn.commit()
             print(f"adding: {x[0]}")
             
@@ -107,7 +107,7 @@ def insert_table(conn, x, cache):
             Act_enrl = cache[12]
             Seats_avil = cache[13]
             sub_id = cnum.split("-")[0]
-            conn.execute(sql,(crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil, sub_id))
+            conn.execute(sql,(crn, Instructor, Title, cnum, Actv, Units, Days, TimeOfLec, Bldg_Rm, Start, End, Max_enrl, Act_enrl, Seats_avil))
             conn.commit()
             print(f"adding: {x[0]}")
        
@@ -126,7 +126,7 @@ def main():
     tables = driver.find_elements_by_tag_name("tr")
     
     ## opening db and adding to it
-    database = r"C:/Users/IDC\Documents/Code/DataBases/Project/CSE-111-Course-Registrar/CourseRegistrar/NCR.sqlite3"
+    database = r"C:/Users/IDC/Documents/Code/DataBases/Project/CSE-111-Course-Registrar/CourseRegistrar/db.sqlite3"
     conn = open_conn(database)
     with conn:
         cache = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
