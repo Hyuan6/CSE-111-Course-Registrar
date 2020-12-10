@@ -1,7 +1,31 @@
-$(document).ready(function() {
 
+$(document).ready(function(){
+    
+    var sid = getcookie("student_id")
+    console.log(sid)
 
-    $("#submit").click(function() {
+    function getcookie(name = '') {
+        let cookies = document.cookie;
+        let cookiestore = {};
+        
+        cookies = cookies.split(";");
+        
+        if (cookies[0] == "" && cookies[0][0] == undefined) {
+            return undefined;
+        }
+        
+        cookies.forEach(function(cookie) {
+            cookie = cookie.split(/=(.+)/);
+            if (cookie[0].substr(0, 1) == ' ') {
+                cookie[0] = cookie[0].substr(1);
+            }
+            cookiestore[cookie[0]] = cookie[1];
+        });
+        
+        return (name !== '' ? cookiestore[name] : cookiestore);
+    }
+    
+    $("#submit").click(function(){
         var cl = document.getElementsByClassName("course-item");
         var classes = [];
         var i;
@@ -15,9 +39,9 @@ $(document).ready(function() {
         console.log(classes);
         $.ajax({
             type: 'GET',
-            url: "/CourseReg/register/",
-            data: {
-                classes
+            url:"/CourseReg/register/", 
+            data:{
+                classes, sid
             },
             success: function(data) {
                 alert("registered")
@@ -36,8 +60,7 @@ $(document).ready(function() {
             type: 'GET',
             url: "/CourseReg/ajax/",
             async: false,
-            success: function(data) {
-                console.log(data)
+            success: function(data){
                 items = data
             },
             failure: function(data) {
@@ -54,6 +77,12 @@ $(document).ready(function() {
         return existing_elements.includes(el);
     }
 
+    function something(){
+        console.log("test passed");
+    }
+
+    var counter = 1;
+    var button_ids =[];
     new autoComplete({
         data: {
             src: ac(),
@@ -66,8 +95,11 @@ $(document).ready(function() {
             if (!exists(feedback.selection.value)) {
                 var new_div = document.createElement("div")
                 new_div.className = "course-item"
-                    // add buttons and inner div
-                new_div.innerHTML = feedback.selection.value + " : <div class='course-list-options'><button class='ui grey tiny button' role='button'>Sections</button><button class='ui pink tiny icon button' role='button'><i aria-hidden='true' class='fa fa-times'></i></button></div>"
+                // add buttons and inner div
+                new_div.innerHTML = feedback.selection.value + " :<div class='course-list-options'><button class='ui grey tiny button' role='button'>Sections</button><button class='ui pink tiny icon button' role='button'><i onclick='something()' aria-hidden='true' class='fa fa-times'></i></button></div>"
+                button_ids.push(counter);
+                counter++
+                // $(i).attr('id', 'id' + counter++)
                 document.getElementById("selclasses").appendChild(new_div)
                 existing_elements.push(feedback.selection.value);
             } else {
@@ -76,4 +108,12 @@ $(document).ready(function() {
 
         }
     });
+    $("i").click(function(){
+        console.log("we here")
+        if(button_ids.includes(this.id)){
+            console.log("button: " + this.id)
+            var elem = document.getElementById(this.id);
+            elem.parentNode.removeChild(elem);
+        }
+    })
 });
