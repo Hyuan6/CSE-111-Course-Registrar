@@ -45,17 +45,18 @@ class Course(models.Model):
 class Roll(models.Model):
     course = models.CharField(max_length = 15) # this field is cnum from Course
     student = models.IntegerField() # this field is student id from Student
+    grade = models.CharField(max_length = 5, blank=True, null=True)
 
 
 
 class Requirments(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.CharField(max_length=15)
     cs1 = models.CharField(max_length = 20, verbose_name = "Class Standing 1")
-    cs2 = models.CharField(max_length = 20)
-    cs3 = models.CharField(max_length = 20)
-    cs4 = models.CharField(max_length = 20)
-    pr1 = models.CharField(max_length = 20)
-    pr2 = models.CharField(max_length = 20)
-    pr3 = models.CharField(max_length = 20)
-    pr4 = models.CharField(max_length = 20)
-    pr5 = models.CharField(max_length = 20)
+    cs2 = models.CharField(max_length = 20, blank=True, null=True)
+    cs3 = models.CharField(max_length = 20, blank=True, null=True)
+    cs4 = models.CharField(max_length = 20, blank=True, null=True)
+    pr1 = models.CharField(max_length = 20, blank=True, null=True)
+    pr2 = models.CharField(max_length = 20, blank=True, null=True)
+    pr3 = models.CharField(max_length = 20, blank=True, null=True)
+    pr4 = models.CharField(max_length = 20, blank=True, null=True)
+    pr5 = models.CharField(max_length = 20, blank=True, null=True)

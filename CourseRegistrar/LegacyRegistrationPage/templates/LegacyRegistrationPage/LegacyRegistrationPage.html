@@ -4,7 +4,6 @@
 <head>
     <style type="text/css">
         @charset "UTF-8";
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -14,28 +13,33 @@
         .ng-hide:not(.ng-hide-animate) {
             display: none !important;
         }
-
+        
         ng\:form {
             display: block;
         }
-
+        
         .ng-animate-shim {
             visibility: hidden;
         }
-
+        
         .ng-anchor {
             position: absolute;
         }
-
+        
         .tabon {
-            PADDING-LEFT: 8px; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND-IMAGE: url("{% static 'LegacyRegistrationPage/images/web_tab_corner.gif' %}") ; COLOR: #ffffff; BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #003366
+            PADDING-LEFT: 8px;
+            FONT-WEIGHT: bold;
+            FONT-SIZE: 12px;
+            BACKGROUND-IMAGE: url("{% static 'LegacyRegistrationPage/images/web_tab_corner.gif' %}");
+            COLOR: #ffffff;
+            BACKGROUND-REPEAT: no-repeat;
+            BACKGROUND-COLOR: #003366
         }
-
         
         BODY {
             background-color: #FFFFFF;
             color: black;
-            font-family: Verdana,Arial Narrow,  helvetica, sans-serif;
+            font-family: Verdana, Arial Narrow, helvetica, sans-serif;
             font-style: normal;
             text-align: left;
             /* BROWSER CONSIDERATION - Override browser settings for BODY margin */
@@ -45,7 +49,7 @@
             /* background-image: url("{% static 'LegacyRegistrationPage/images/web_bg_app.jpg' %}"); */
             background-repeat: no-repeat;
         }
-
+        
         .taboff {
             PADDING-LEFT: 8px;
             FONT-WEIGHT: bold;
@@ -55,7 +59,7 @@
             BACKGROUND-REPEAT: no-repeat;
             BACKGROUND-COLOR: #cccccc
         }
-
+        
         .tabdisable {
             PADDING-LEFT: 8px;
             FONT-WEIGHT: bold;
@@ -71,27 +75,29 @@
     <meta http-equiv="Cache-Control" name="Cache-Control" content="no-cache">
     <link rel="stylesheet" href="{% static 'LegacyRegistrationPage/web_defaultapp.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'LegacyRegistrationPage/web_defaultprint.css' %}" type="text/css" media="print">
-    <link rel="shortcut icon" type="image/png" href="https://mystudentrecord.ucmerced.edu/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="https://mystudentrecord.ucmerced.edu/favicon.ico" />
     <title>Add/Drop Classes: </title>
     <meta http-equiv="Content-Script-Type" name="Default_Script_Language" content="text/javascript">
     <script language="JavaScript" type="text/javascript">
-    // Hide JavaScript from older browsers
-        window.onunload = function () { submitcount = 0; }
+        // Hide JavaScript from older browsers
+        window.onunload = function() {
+            submitcount = 0;
+        }
         var submitcount = 0;
+
         function checkSubmit() {
             if (submitcount == 0) {
                 submitcount++;
                 return true;
-            }
-            else {
+            } else {
                 alert("Your changes have already been submitted.");
                 return false;
             }
         }
-    //  End script hiding
+        //  End script hiding
     </script>
     <script language="JavaScript" type="text/javascript">
-    // Hide JavaScript from older browsers
+        // Hide JavaScript from older browsers
         //  Function to open a window
         function windowOpen(window_url) {
             helpWin = window.open(window_url, '', 'toolbar=yes,status=no,scrollbars=yes,menubar=yes,resizable=yes,directories=no,location=no,width=350,height=400');
@@ -99,12 +105,12 @@
                 if (helpWin) helpWin.focus()
             }
         }
-    //  End script hiding
+        //  End script hiding
     </script>
 </head>
 
 <body>
-    <img id = "banner" src = "{% static 'LegacyRegistrationPage/images/web_bg_app.jpg' %}">
+    <img id="banner" src="{% static 'LegacyRegistrationPage/images/web_bg_app.jpg' %}">
     <div class="headerwrapperdiv">
         <div class="headerlinksdiv">
             <span class="pageheaderlinks2">
@@ -174,10 +180,10 @@
                     <td class="pldefault">
                         <div class="headerlinksdiv2">
                             <form action="" method="post">
-                                {% csrf_token %}
-                                Search
+                                {% csrf_token %} Search
                                 <span class="fieldlabeltextinvisible"><label for="keyword_in_id"><span
-                                            class="fieldlabeltext">Search</span></label></span>
+                                            class="fieldlabeltext">Search</span></label>
+                                </span>
                                 <input type="text" name="KEYWRD_IN" size="20" maxlength="65" id="keyword_in_id">
                                 <input type="submit" value="Go">
                             </form>
@@ -220,16 +226,12 @@
                         <p class="rightaligntext" p="">
                         </p>
                         <div class="staticheaders">
-                            111111111 John Doe<br>
-                            Spring Semester 2021<br>
-                            Jan 01, 1970 12:00 am<br>
+                            111111111 John Doe<br> Spring Semester 2021<br> Jan 01, 1970 12:00 am<br>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td class="bg3" width="100%" colspan="3"><img src="{% static 'LegacyRegistrationPage/images/web_transparent.gif' %}"
-                            alt="Transparent Image" class="headerImg" title="Transparent Image" name="web_transparent"
-                            hspace="0" vspace="0" border="0" height="3" width="10"></td>
+                    <td class="bg3" width="100%" colspan="3"><img src="{% static 'LegacyRegistrationPage/images/web_transparent.gif' %}" alt="Transparent Image" class="headerImg" title="Transparent Image" name="web_transparent" hspace="0" vspace="0" border="0" height="3" width="10"></td>
                 </tr>
             </tbody>
         </table>
@@ -241,13 +243,10 @@
         <form action="" method='post'>
             {% csrf_token %}
             <div class="infotextdiv">
-                <table class="infotexttable"
-                    summary="This layout table contains information that may be helpful in understanding the content and functionality of this page.  It could be a brief set of instructions, a description of error messages, or other special information.">
+                <table class="infotexttable" summary="This layout table contains information that may be helpful in understanding the content and functionality of this page.  It could be a brief set of instructions, a description of error messages, or other special information.">
                     <tbody>
                         <tr>
-                            <td class="indefault"><img src="{% static 'LegacyRegistrationPage/images/twgginfo.gif' %}"
-                                    alt="Information" class="headerImg" title="Information" name="Info" hspace="0"
-                                    vspace="0" border="0" height="24" width="27"></td>
+                            <td class="indefault"><img src="{% static 'LegacyRegistrationPage/images/twgginfo.gif' %}" alt="Information" class="headerImg" title="Information" name="Info" hspace="0" vspace="0" border="0" height="24" width="27"></td>
                             <td class="indefault"><span class="infotext"> Students that select hybrid or in-person
                                     courses agree to follow the University policy for face coverings and other physical
                                     mitigation measures that reduce the transmission of COVID-19 while present in the
@@ -314,8 +313,7 @@
             <table class="dataentrytable" summary="Add Classes Data Entry" width="100%">
                 <tbody>
                     <tr>
-                        <td colspan="10" class="detitle" scope="colgroup"><acronym
-                                title="Course Reference Numbers">CRNs</acronym></td>
+                        <td colspan="10" class="detitle" scope="colgroup"><acronym title="Course Reference Numbers">CRNs</acronym></td>
                     </tr>
                     <tr>
                         <td class="dedefault">
@@ -363,25 +361,21 @@
             </table>
 
             <br>
-            <input type="submit" name="REG_BTN" value="Submit Changes">
+            <input type="hidden" name="student_id" id="student_id">
+            <input type="submit" name="REG_BTN" value="Submit Changes" id="submit_button">
             <input type="submit" name="REG_BTN" value="Class Search">
             <input type="reset" value="Reset">
         </form>
 
         <!--  ** START OF twbkwbis.P_CloseDoc **  -->
-        <table class="plaintable" summary="This is table displays line separator at end of the page." width="100%"
-            cellspacing="0" cellpadding="0" border="0">
+        <table class="plaintable" summary="This is table displays line separator at end of the page." width="100%" cellspacing="0" cellpadding="0" border="0">
             <tbody>
                 <tr>
-                    <td class="bgtabon" width="100%" colspan="2"><img src="{% static 'LegacyRegistrationPage/images/web_transparent.gif' %}"
-                            alt="Transparent Image" class="headerImg" title="Transparent Image" name="web_transparent"
-                            hspace="0" vspace="0" border="0" height="3" width="10"></td>
+                    <td class="bgtabon" width="100%" colspan="2"><img src="{% static 'LegacyRegistrationPage/images/web_transparent.gif' %}" alt="Transparent Image" class="headerImg" title="Transparent Image" name="web_transparent" hspace="0" vspace="0" border="0" height="3" width="10"></td>
                 </tr>
             </tbody>
         </table>
-        <a href="#top" onmouseover="window.status='Skip to top of page'; return true"
-            onmouseout="window.status=''; return true" onfocus="window.status='Skip to top of page'; return true"
-            onblur="window.status=''; return true" class="skiplinks">Skip to top of page</a>
+        <a href="#top" onmouseover="window.status='Skip to top of page'; return true" onmouseout="window.status=''; return true" onfocus="window.status='Skip to top of page'; return true" onblur="window.status=''; return true" class="skiplinks">Skip to top of page</a>
     </div>
     <div class="footerbeforediv">
 
