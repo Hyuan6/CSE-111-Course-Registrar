@@ -39,6 +39,18 @@ def index(request):
             username = form.get('username')
             password = form.get('password')
 
+            if 'sign-up' in request.POST:
+                YEAR_IN_SCHOOL_CHOICES = ['FR', 'SO', 'JR', 'SR', 'GR']
+                student_id = randint(100000000,999999999)
+                class_standing = YEAR_IN_SCHOOL_CHOICES[randint(0,4)]
+                phone_number = "XXX-XXX-XXXX"
+
+                cur.execute(f"""insert into RegistrationPage_student( Student_ID, Password, Username, Class_Standing, Phone_Number, Academic_Probation_Hold)
+                                values ({student_id}, '{password}', '{username}', '{class_standing}', '{phone_number}', 0);""")
+                conn.commit()
+
+                print(f"Successfully added {username} to Students")
+
             cur.execute(f"""SELECT EXISTS(SELECT 1 
                                       FROM RegistrationPage_student 
                                       WHERE Username='{username}' and Password='{password}' 
@@ -55,27 +67,7 @@ def index(request):
 
             conn.commit()
 
-            # print(f"{username} Logged In Successfully")
-            closeConnection(conn, database)
-
-        elif 'sign-up' in request.POST:
-            conn = openConnection(database)
-            cur = conn.cursor()
-
-            YEAR_IN_SCHOOL_CHOICES = ['FR', 'SO', 'JR', 'SR', 'GR']
-
-            student_id = randint(100000000,999999999)
-            username = form.get('username')
-            password = form.get('password')
-            class_standing = YEAR_IN_SCHOOL_CHOICES[randint(0,4)]
-            phone_number = "XXX-XXX-XXXX"
-
-            cur.execute(f"""insert into RegistrationPage_student( Student_ID, Password, Username, Class_Standing, Phone_Number, Academic_Probation_Hold)
-                            values ({student_id}, '{password}', '{username}', '{class_standing}', '{phone_number}', 0);""")
-
-            print(f"Successfully added {username} to Students")
-
-            conn.commit()
+            print(f"{username} Logged In Successfully")
             closeConnection(conn, database)
 
     return response
