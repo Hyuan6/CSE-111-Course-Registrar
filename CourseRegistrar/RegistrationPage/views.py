@@ -34,7 +34,7 @@ def closeConnection(_conn, _dbFile):
 def index(request):
     if request.method == 'POST':
         form = request.POST.dict()
-        database = f"NCR.sqlite3"
+        database = f"db.sqlite3"
 
         if 'crn-submit' in request.POST:
             conn = openConnection(database)
