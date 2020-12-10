@@ -6,6 +6,8 @@ import json
 import sqlite3
 from random import randint
 
+from RegistrationPage.utils.LegRegAPI import LegacyRegistrationAPI
+
 def openConnection(_dbFile):
     conn = None
     try:
@@ -83,18 +85,16 @@ def courseReg(request):
 
 #used to update autocomplete on search bar
 def search_bar(request):
-    print("this method is running")
+    # print("this method is running")
     if request.is_ajax and request.method == "GET":
-        print("hey this shit works")
+        # print("hey this shit works")
         ans = autocomp_data()
-
-        y = json.dumps(ans)
         
         return JsonResponse(ans, safe = False, status = 200)
     return JsonResponse({"shits not working":True}, status = 200)
 #query db for autocomplete info
 def autocomp_data():
-    database = r"C:/Users/IDC/Documents/Code/DataBases/Project/CSE-111-Course-Registrar/CourseRegistrar/db.sqlite3"
+    database = f"db.sqlite3"
     conn = sqlite3.connect(database)
     with conn:
         try:
@@ -121,26 +121,26 @@ def reg_for(request):
     if request.is_ajax() and request.method == "GET":
         a = request.GET.values()
         course_nums = list(a)
-        print(course_nums)
+        
+        student_ID = course_nums[-1]
         course_crns = []
-        for num in course_nums:
+
+        for num in course_nums[:-1]:
             temp = f_crn(num)
             course_crns.append(temp)
+
         print(course_crns)
 
+        lgAPI = LegacyRegistrationAPI(course_crns, student_ID)
+        lgAPI.start()
 
-        # API TAKES OVER HERE
-
-
-
-        print("do thing")
     else:
         print("do otherthing")
 
     return JsonResponse(1, safe = False, status = 200)
 # find crns for course passed through reg_for
 def f_crn(course_number):
-    database = r"C:/Users/IDC/Documents/Code/DataBases/Project/CSE-111-Course-Registrar/CourseRegistrar/db.sqlite3"
+    database = f"db.sqlite3"
     conn = sqlite3.connect(database)
     with conn:
         try:
