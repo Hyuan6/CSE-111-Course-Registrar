@@ -74,7 +74,7 @@ def index(request):
             conn.commit()
             closeConnection(conn, database)
 
-    return 
+    return response
 
 def courseReg(request):
     return render(request, 'RegistrationPage/regPage.html')
