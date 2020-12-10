@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'RegistrationPage/Bobcatcourses.tk.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'RegistrationPage/templateCSS.css' %}">
-    <script src="https://kraaden.github.io/autocomplete/autocomplete.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@8.0.2/dist/js/autoComplete.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="{% static 'RegistrationPage/regPage.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="https://kraaden.github.io/autocomplete/autocomplete.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@8.0.2/dist/css/autoComplete.min.css"> -->
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="https://mystudentrecord.ucmerced.edu/favicon.ico" />
@@ -38,52 +38,24 @@
             <div class="column-search" style="text-align: center; margin-top: 5px;">
                 <div class="ui medium header">Spring 2021</div>
                 <div>
-                    <div role="combobox" aria-busy="false" aria-expanded="false" class="ui fluid search selection dropdown">
-                        <input id="search_box" aria-autocomplete="list" autocomplete="off" class="search" tabindex="0" type="text" value="" placeholder="Add More...">
-                        <i aria-hidden="true" class="dropdown icon">
-                            
-                        </i>
-                        <div id="selclasses" aria-multiselectable="false" role="listbox" class="menu transition">
-                            <div role="option" aria-checked="false" aria-selected="false" class="item" style="pointer-events: all;"><span class="text">CSE-15: Discrete Mathematics</span>
-                            </div>
-                            <div role="option" aria-checked="false" aria-selected="false" class="item" style="pointer-events: all;"><span class="text">CSE-100: Algorithm Design and
-									Analysis</span></div>
-                            <div role="option" aria-checked="false" aria-selected="false" class="item" style="pointer-events: all;"><span class="text">CSE-120: Software Engineering</span>
-                            </div>
-                            <div role="option" aria-checked="false" aria-selected="false" class="item" style="pointer-events: all;"><span class="text">CSE-140: Computer
-									Architecture</span></div>
-                            <div role="option" aria-checked="false" aria-selected="false" class="item" style="pointer-events: all;"><span class="text">CSE-160: Computer Networks</span>
-                            </div>
-                            <div role="option" aria-checked="false" aria-selected="false" class="item" style="pointer-events: all;"><span class="text">CSE-162: Mobile Computing</span>
-                            </div>
-                            <div role="option" aria-checked="false" aria-selected="false" class="item" style="pointer-events: all;"><span class="text">CSE-165: Intro to Object Orient
-									Program</span></div>
-                            <div role="option" aria-checked="false" aria-selected="true" class="selected item" style="pointer-events: all;"><span class="text">CSE-179: Intro Parallel
-									Computing</span></div>
-                            <div role="option" aria-checked="false" aria-selected="false" class="item" style="pointer-events: all;"><span class="text">CSE-185: Intro to Computer
-									Vision</span></div>
-                        </div>
-                    </div>
+                    <input id="autoComplete" class = "autocomplete" tabindex = "1" style="width: 100%;">
+                    <!-- <div role="combobox" aria-busy="false" aria-expanded="false" class="ui fluid search selection dropdown">
+                        
+                        
+                        
+                    </div> -->
                 </div>
-                <div class="course-list">
-                    <div class="course-item">CSE-120 :
-                        <div class="course-list-options"><button class="ui grey tiny button" role="button">Sections</button><button class="ui pink tiny icon button" role="button"><i aria-hidden="true"
-									class="close icon"></i></button></div>
-                    </div>
-                    <div class="course-item">ECON-1 :
-                        <div class="course-list-options"><button class="ui grey tiny button" role="button">Sections</button><button class="ui pink tiny icon button" role="button"><i aria-hidden="true"
-									class="close icon"></i></button></div>
-                    </div>
-                    <div class="course-item">CSE-185 :
-                        <div class="course-list-options"><button class="ui grey tiny button" role="button">Sections</button><button class="ui pink tiny icon button" role="button"><i aria-hidden="true"
-									class="close icon"></i></button></div>
-                    </div>
-                </div><button class="ui olive fluid button" role="button" style="margin-top: 10px; text-align: center;">Register</button><button class="ui fluid icon left labeled button" role="button" style="margin-top: 10px; text-align: center;">Preferences<i aria-hidden="true"
+                <div id="selclasses" class="course-list">
+                    
+                </div><button id="gen" class="ui olive fluid button" role="button" style="margin-top: 10px; text-align: center;">Generate</button><button class="ui fluid icon left labeled button" role="button" style="margin-top: 10px; text-align: center;">Preferences<i aria-hidden="true"
 						class="edit icon"></i></button>
                 <div class="accordion ui" style="margin-top: 20px;">
-                    <div class="title"><i aria-hidden="true" class="dropdown icon"></i>Custom Events...</div>
-                    <div class="content"><button class="ui grey fluid icon left labeled button" role="button" style="margin-top: 10px; text-align: center;">Custom Event<i aria-hidden="true"
-								class="plus icon"></i></button></div>
+                    <div class="content">
+                        <button id="submit" class="ui grey fluid icon left labeled button" role="button" style="margin-top: 10px; text-align: center;">
+                            Register
+                            <i aria-hidden="true"class="plus icon"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="column-calendar">
