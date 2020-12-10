@@ -49,8 +49,25 @@ $(document).ready(function(){
             },
         });
     });
-    
-    
+
+    $("#gen").click(function(){
+        
+    });
+
+    var modal = document.getElementById("myModal");
+    $("#pref").click(function(){
+        modal.style.display = "block";
+    });
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function(){
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
     function ac(){
         var rep = [];
         $.ajax({
@@ -62,7 +79,7 @@ $(document).ready(function(){
             },
             failure: function(data){
                 console.log(data)
-                alert("shits fucked");
+                
             },
         });
         rep = items
@@ -77,6 +94,17 @@ $(document).ready(function(){
         console.log("test passed");
     }
 
+    $(".chb").change(function() {
+        $(".chb").prop('checked', false);
+        $(this).prop('checked', true);
+      });
+
+    $(".bhc").change(function() {
+        $(".bhc").prop('checked', false);
+        $(this).prop('checked', true);
+    });
+
+    
     var counter = 1;
     var button_ids =[];
     new autoComplete({

@@ -41,8 +41,14 @@
 
                 <div id="selclasses" class="course-list">
                     
-                </div><button id="gen" class="ui olive fluid button" role="button" style="margin-top: 10px; text-align: center;">Generate</button><button class="ui fluid icon left labeled button" role="button" style="margin-top: 10px; text-align: center;">Preferences<i aria-hidden="true"
-						class="edit icon"></i></button>
+                </div>
+                    <button id="gen" class="ui olive fluid button" role="button" style="margin-top: 10px; text-align: center;">
+                        Generate
+                    </button>
+                    <button id = "pref" class="ui fluid icon left labeled button" role="button" style="margin-top: 10px; text-align: center;">
+                        Preferences
+                        <i aria-hidden="true" class="edit icon"></i>
+                    </button>
                 <div class="accordion ui" style="margin-top: 20px;">
                     <div class="content">
                         <button id="submit" class="ui grey fluid icon left labeled button" role="button" style="margin-top: 10px; text-align: center;">
@@ -51,6 +57,76 @@
                         </button>
                     </div>
                 </div>
+            </div>
+            <div id="myModal" class="modelo">
+
+                <!-- Modal content -->
+                <div class="modelo-content">
+                    <span class="close">&times;</span>
+                    <h3 style="padding-left: 10px; padding-top: 10px;">Preferences</h3>
+                  
+                  <div class="flexbox" display = "flex">
+                      
+                    
+                    <label for="thing">Thing1</label>
+                    <input id = "thing1" class = 'chb' type="checkbox">
+                  
+                    <label for="thing">Thing2</label>
+                    <input id = "thing2" class = 'chb' type="checkbox">
+                   
+                  </div>
+                  <div class="flexbox" display = "flex">
+                      
+                    
+                    <label for="thing">Thing1</label>
+                    <input id = "thing1" class="bhc" type="checkbox">
+                  
+                    <label for="thing">Thing2</label>
+                    <input id = "thing2" class="bhc" type="checkbox">
+                   
+                  </div>
+                  <div class="flexbox" display = "flex">
+                    <label for="fc">Include Closed Sections</label>
+                    <input id = "fc" type="checkbox">
+                  </div>
+
+                  <div class="flexbox" display = "flex">
+                    <label for="thing">Time Filters:</label>
+                    <select id = "early" name="select" placeholder="earliest">
+                        <option value="" selected disabled hidden>earliest?</option>
+                        <option value="7:30">7:30am</option>
+                        <option value="8:00">8:00am</option>
+                        <option value="8:30">8:30am</option>
+                        <option value="9:00">9:00am</option>
+                        <option value="9:30">9:30am</option>
+                        <option value="10:00">10:00am</option>
+                        <option value="10:30">10:30am</option>
+                        <option value="11:00">11:00am</option>
+                        <option value="11:30">11:30am</option>
+                        <option value="12:00">12:00am</option>
+                    </select>
+                    <select id = "late" name="select">
+                        <option value="" selected disabled hidden>latest?</option>
+                        <option value="3:00">3:00pm</option>
+                        <option value="3:30">3:30pm</option>
+                        <option value="4:00">4:00pm</option>
+                        <option value="4:30">4:30pm</option>
+                        <option value="5:00">5:00pm</option>
+                        <option value="5:30">5:30pm</option>
+                        <option value="6:00">6:00pm</option>
+                        <option value="6:30">6:30pm</option>
+                        <option value="7:00">7:00pm</option>
+                        <option value="7:30">7:30pm</option>
+                        <option value="8:00">8:00pm</option>
+                        <option value="8:30">8:30pm</option>
+                        <option value="9:00">9:00pm</option>
+                        <option value="9:30">9:30pm</option>
+                        <option value="10:00">10:00pm</option>
+                    </select>
+                  </div>
+                  
+
+                </div> 
             </div>
             <div class="column-calendar">
                 <div class="schedule-button-controls" style="">
