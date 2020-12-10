@@ -75,13 +75,13 @@ def main():
             for ele in values:
                 if ele.text == "Graduate" and len(cs) > 0:
                     continue
-                if ele.text in YEAR_IN_SCHOOL_CHOICES:
+                if ele.text in YEAR_IN_SCHOOL_CHOICES and ele.text not in cs:
                     cs.append(ele.text)
 
         for ele in values:
             preReqs = COURSE_REGEX_PATTERN.findall(ele.text)
 
-            for pReq in preReqs:
+            for pReq in preReqs and pReq not in pr:
                 pr.append(pReq)
 
         # print("")
