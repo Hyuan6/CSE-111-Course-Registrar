@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     
     var sid = getcookie("student_id")
@@ -29,9 +30,11 @@ $(document).ready(function(){
         var classes = [];
         var i;
         console.log(cl.length)
-        for(i = 0; i < cl.length;i++){
+        for (i = 0; i < cl.length; i++) {
             var count = i;
-            classes.push({[count]:cl[i].innerText.split('\n')[0].split(' ')[0]})
+            classes.push({
+                [count]: cl[i].innerText.split('\n')[0].split(' ')[0]
+            })
         }
         console.log(classes);
         $.ajax({
@@ -40,27 +43,27 @@ $(document).ready(function(){
             data:{
                 classes, sid
             },
-            success: function(data){
+            success: function(data) {
                 alert("registered")
                 console.log("shits done");
             },
-            failure: function(data){
+            failure: function(data) {
                 alert("shits fucked");
             },
         });
     });
-    
-    
-    function ac(){
+
+
+    function ac() {
         var rep = [];
         $.ajax({
             type: 'GET',
-            url:"/CourseReg/ajax/",
+            url: "/CourseReg/ajax/",
             async: false,
             success: function(data){
                 items = data
             },
-            failure: function(data){
+            failure: function(data) {
                 console.log(data)
                 alert("shits fucked");
             },
@@ -69,7 +72,8 @@ $(document).ready(function(){
         return rep;
     }
     var existing_elements = [];
-    function exists(el){
+
+    function exists(el) {
         return existing_elements.includes(el);
     }
 
@@ -80,15 +84,15 @@ $(document).ready(function(){
     var counter = 1;
     var button_ids =[];
     new autoComplete({
-        data:{
+        data: {
             src: ac(),
             cache: false
         },
-        placeHolder:"Course Number",
-        highlight:true,
+        placeHolder: "Course Number",
+        highlight: true,
         searchEngine: "loose",
-        onSelection: feedback =>{
-            if(!exists(feedback.selection.value)){
+        onSelection: feedback => {
+            if (!exists(feedback.selection.value)) {
                 var new_div = document.createElement("div")
                 new_div.className = "course-item"
                 // add buttons and inner div
@@ -98,16 +102,12 @@ $(document).ready(function(){
                 // $(i).attr('id', 'id' + counter++)
                 document.getElementById("selclasses").appendChild(new_div)
                 existing_elements.push(feedback.selection.value);
-            }
-            else{
+            } else {
                 alert("already added")
             }
-            
+
         }
     });
-
-   
-
     $("i").click(function(){
         console.log("we here")
         if(button_ids.includes(this.id)){
@@ -116,5 +116,4 @@ $(document).ready(function(){
             elem.parentNode.removeChild(elem);
         }
     })
-    
 });
