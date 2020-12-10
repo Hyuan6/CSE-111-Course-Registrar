@@ -16,6 +16,7 @@ class Student(models.Model):
     Username = models.CharField(max_length = 20, unique = True)
     Class_Standing = models.CharField(max_length = 2, choices = YEAR_IN_SCHOOL_CHOICES)
     Phone_Number = models.CharField(max_length = 14)
+    Academic_Probation_Hold = models.BooleanField(blank=True, null=True)
 
     def __str__(self):
         return self.Username
@@ -60,3 +61,8 @@ class Requirments(models.Model):
     pr3 = models.CharField(max_length = 20, blank=True, null=True)
     pr4 = models.CharField(max_length = 20, blank=True, null=True)
     pr5 = models.CharField(max_length = 20, blank=True, null=True)
+
+class Honors(models.Model):
+    student_id = models.IntegerField()
+    honor_name = models.CharField(max_length=20, blank=True, null=True)
+    semester_awarded = models.CharField(max_length=20, blank=True, null=True)
