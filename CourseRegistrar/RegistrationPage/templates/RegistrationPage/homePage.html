@@ -2,9 +2,9 @@
 <html>
 
 <head>
-
+    {% load static %}
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'RegistrationPage/Homepage.css' %}">
@@ -33,7 +33,7 @@
                             <input id="passwordInput" name="password" placeholder="Password" class="form-control form-control-sm" type="password" required="">
                         </div>
                         <div class="form-group">
-                            <button name="crn-submit" type="submit" class="btn btn-primary btn-block">Login</button>
+                            <button name="crn-submit" type="submit" class="btn btn-primary btn-block" onclick="updatePage()">Login</button>
                         </div>
                         <div class="form-group">
                             <button name="sign-up" type="submit" class="btn btn-primary btn-block">Sign Up</button>
@@ -44,15 +44,135 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="Main Banner" style="display: block;">
         <div class="row h-100" style="width:100%">
             <div class="col-sm-12 align-self-center">
                 <div id="notificationBanner" class="col-auto mx-auto text-center">
-                    <span id="HomePageText">Home Page</span>
+                    <span id="HomePageText">UC Merced Course Registrar</span>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="container" style="display: none;" id="User Profile">
+        <!-- Header -->
+        {% load static %}
+        <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-image: url({% static 'RegistrationPage/images/userProfileBackground.jpg' %});">
+            <!-- Mask -->
+            <span class="mask bg-gradient-default opacity-8"></span>
+            <!-- Header container -->
+            <div class="container-fluid d-flex align-items-center">
+                <div class="row">
+                    <div class="col-lg-7 col-md-10">
+                        <h1 class="display-2 text-white">Hello Admin</h1>
+                        <p class="text-white mt-0 mb-5">This is the defualt user profile page. Here you can modify your user account information</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page content -->
+        <div class="container-fluid mt--7">
+            <div class="row">
+                <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+                    <div class="card card-profile shadow">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-3 order-lg-2">
+                                <div class="card-profile-image">
+                                    <a href="#">
+                                        <img src="{% static 'RegistrationPage/images/profilePicture.jpeg' %}" class="rounded-circle">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0 pt-md-4">
+                            <div class="text-center" style="padding-top: 7em;">
+                                <h3>
+                                    Admin<span class="font-weight-light">, 1970</span>
+                                </h3>
+                                <div class="h5 font-weight-300">
+                                    <i class="ni location_pin mr-2"></i>Merced, California
+                                </div>
+                                <div class="h5 mt-4">
+                                    <i class="ni business_briefcase-24 mr-2"></i>Student at
+                                </div>
+                                <div>
+                                    <i class="ni education_hat mr-2"></i>University of California - Merced
+                                </div>
+                                <hr class="my-4">
+                                <p>DEMO DEMO DEMO DEMO DEMO</p><br>
+                                <p> I LOVE DEMOS :(</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8 order-xl-1">
+                    <div class="card bg-secondary shadow">
+                        <div class="card-header bg-white border-0">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <h3 class="mb-0">My account</h3>
+                                    <a id="userProfileSID"></a>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <a href="#!" class="btn btn-sm btn-primary">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <h6 class="heading-small text-muted mb-4">User information</h6>
+                                <div class="pl-lg-4">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-username">Username</label>
+                                                <input disabled type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="Admin">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-email">Password</label>
+                                                <input disabled type="email" id="input-email" class="form-control form-control-alternative" placeholder="****">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-first-name">Class Standing</label>
+                                                <input disabled type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Class Standing" value="Fr">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-last-name">Phone Number</label>
+                                                <input disabled type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Phone Number" value="XXX-XXX-XXXX">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-first-name">Academic Probation</label>
+                                                <input disabled type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Academic Probation" value="None">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-last-name">Holds</label>
+                                                <input disabled type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Holds" value="None">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
