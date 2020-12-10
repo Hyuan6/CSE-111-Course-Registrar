@@ -35,7 +35,7 @@ $(document).ready(function(){
             url:"/CourseReg/ajax/",
             async: false,
             success: function(data){
-                console.log(data)
+                
                 items = data
             },
             failure: function(data){
@@ -51,6 +51,12 @@ $(document).ready(function(){
         return existing_elements.includes(el);
     }
 
+    function something(){
+        console.log("test passed");
+    }
+
+    var counter = 1;
+    var button_ids =[];
     new autoComplete({
         data:{
             src: ac(),
@@ -64,7 +70,10 @@ $(document).ready(function(){
                 var new_div = document.createElement("div")
                 new_div.className = "course-item"
                 // add buttons and inner div
-                new_div.innerHTML = feedback.selection.value + " : <div class='course-list-options'><button class='ui grey tiny button' role='button'>Sections</button><button class='ui pink tiny icon button' role='button'><i aria-hidden='true' class='close icon'></i></button></div>"
+                new_div.innerHTML = feedback.selection.value + " :<div class='course-list-options'><button class='ui grey tiny button' role='button'>Sections</button><button class='ui pink tiny icon button' role='button'><i onclick='something()' aria-hidden='true' class='fa fa-times'></i></button></div>"
+                button_ids.push(counter);
+                counter++
+                // $(i).attr('id', 'id' + counter++)
                 document.getElementById("selclasses").appendChild(new_div)
                 existing_elements.push(feedback.selection.value);
             }
@@ -74,35 +83,15 @@ $(document).ready(function(){
             
         }
     });
-    
-    
-    
 
+   
 
-
-
-
-
-    // autocomplete({
-    //     input: input,
-    //     fetch: function(text, update) {
-    //         text = text.toLowerCase();
-    //         // you can also use AJAX requests instead of preloaded data
-    //         var suggestions = countries.filter(n => n.label.toLowerCase().startsWith(text))
-    //         console.log(suggestions)
-    //         update(suggestions);
-    //     },
-    //     onSelect: function(item) {
-    //         input.value = item.label;
-    //         //create new div
-    //         var new_div = document.createElement("div")
-    //         new_div.className = "course-item"
-    //         // add buttons and inner div
-    //         new_div.innerHTML = item.label + ": <div class='course-list-options'><button class='ui grey tiny button' role='button'>Sections</button><button class='ui pink tiny icon button' role='button'><i aria-hidden='true' class='close icon'></i></button></div>"
-    //         document.getElementById("selclasses").appendChild(new_div)
-            
-    //         //THIS DOES NOT CHECK IF CLASS ALREADY ADDED
-            
-    //     }
-    // });
+    $("i").click(function(){
+        console.log("we here")
+        if(button_ids.includes(this.id)){
+            console.log("button: " + this.id)
+            var elem = document.getElementById(this.id);
+            elem.parentNode.removeChild(elem);
+        }
+    })
 });
