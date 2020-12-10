@@ -25,13 +25,13 @@ def index(request):
         form = request.POST.dict()
         database = f"db.sqlite3"
 
-        sql = """insert into RegistrationPage_roll(course, student)
+        sql = """insert into RegistrationPage_roll(course, student, grade)
                values """
         student_id = form.get('student_id')
 
         for index, crn in form.items():
             if "CRN_" in index and crn != '':
-                sql += f"({crn}, {student_id}),"
+                sql += f"({crn}, {student_id}, 'null'),"
 
         #remove hanging ','
         sql = sql[:-1]

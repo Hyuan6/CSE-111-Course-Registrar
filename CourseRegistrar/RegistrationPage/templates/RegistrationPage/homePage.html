@@ -30,7 +30,7 @@
                             <input id="usernameInput" name="username" placeholder="Username" class="form-control form-control-sm" type="text" required="">
                         </div>
                         <div class="form-group">
-                            <input id="passwordInput" name="password" placeholder="Password" class="form-control form-control-sm" type="text" required="">
+                            <input id="passwordInput" name="password" placeholder="Password" class="form-control form-control-sm" type="password" required="">
                         </div>
                         <div class="form-group">
                             <button name="crn-submit" type="submit" class="btn btn-primary btn-block">Login</button>
@@ -53,11 +53,15 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <!-- <script src="{% static 'RegistrationPage/Homepage.js'%}"></script> -->
+    <div id="cookieConsent">
+        This website is using cookies. <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">More info</a>. <a class="cookieConsentOK">OK</a>
+    </div>
+
+    <script src="{% static 'RegistrationPage/Homepage.js'%}"></script>
 
 </body>
 

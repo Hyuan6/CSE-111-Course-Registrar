@@ -63,3 +63,42 @@ button:focus {
     float: right;
     padding: 8px 16px;
 }
+
+#cookieConsent {
+    background-color: #333;
+    min-height: 26px;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 26px;
+    padding: 8px 0 8px 30px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: none;
+    z-index: 9999;
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+#cookieConsent a {
+    color: #4B8EE7;
+    text-decoration: none;
+}
+
+#cookieConsent a.cookieConsentOK {
+    background-color: #4CAF50;
+    color: #000;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 0 20px;
+    cursor: pointer;
+    float: right;
+    margin: 0 60px 0 10px;
+}
+
+#cookieConsent a.cookieConsentOK:hover {
+    background-color: #357737;
+}

@@ -22,6 +22,8 @@ def closeConnection(_conn, _dbFile):
         print(e)
 
 def index(request):
+    response = render(request, 'RegistrationPage/homePage.html')
+
     if request.method == 'POST':
         form = request.POST.dict()
         database = f"db.sqlite3"
@@ -38,7 +40,14 @@ def index(request):
                                       WHERE Username='{username}' and Password='{password}' 
                                       LIMIT 1);""")
             success = cur.fetchone()[0]
-            print(success)
+            
+            if success:
+                student_id = cur.execute(f"""SELECT Student_ID
+                              FROM RegistrationPage_student
+                              WHERE Username = '{username}' and Password='{password}'
+                              LIMIT 1""").fetchone()[0]
+
+                response.set_cookie(key="student_id", value=student_id)
 
             conn.commit()
 
@@ -65,7 +74,7 @@ def index(request):
             conn.commit()
             closeConnection(conn, database)
 
-    return render(request, 'RegistrationPage/homePage.html')
+    return response
 
 def courseReg(request):
     return render(request, 'RegistrationPage/regPage.html')
