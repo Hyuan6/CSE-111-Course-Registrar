@@ -5,9 +5,6 @@ import sqlite3
 from random import randint
 
 def openConnection(_dbFile):
-    print("++++++++++++++++++++++++++++++++++")
-    print("Open database: ", _dbFile)
-
     conn = None
     try:
         conn = sqlite3.connect(_dbFile)
@@ -15,21 +12,14 @@ def openConnection(_dbFile):
     except Error as e:
         print(e)
 
-    print("++++++++++++++++++++++++++++++++++")
-
     return conn
 
 def closeConnection(_conn, _dbFile):
-    print("++++++++++++++++++++++++++++++++++")
-    print("Close database: ", _dbFile)
-
     try:
         _conn.close()
         print("success")
     except Error as e:
         print(e)
-
-    print("++++++++++++++++++++++++++++++++++")
 
 def index(request):
     if request.method == 'POST':
@@ -67,7 +57,7 @@ def index(request):
             class_standing = YEAR_IN_SCHOOL_CHOICES[randint(0,4)]
             phone_number = "XXX-XXX-XXXX"
 
-            cur.execute(f"""insert into RegistrationPage_student(id, Student_ID, Password, Username, Class_Standing, Phone_Number)
+            cur.execute(f"""insert into RegistrationPage_student( Student_ID, Password, Username, Class_Standing, Phone_Number)
                             values ({student_id}, '{password}', '{username}', '{class_standing}', '{phone_number}');""")
 
             print(f"Successfully added {username} to Students")
