@@ -14,6 +14,7 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="https://mystudentrecord.ucmerced.edu/favicon.ico" />
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>RegPage</title>
 
 </head>
@@ -59,16 +60,19 @@
                 </div>
                 <div class="course-list">
                     <div class="course-item">CSE-120 :
-                        <div class="course-list-options"><button class="ui grey tiny button" role="button">Sections</button><button class="ui pink tiny icon button" role="button"><i aria-hidden="true"
-									class="close icon"></i></button></div>
+                        <div class="course-list-options"><button class="ui grey tiny button" role="button">Sections</button>
+                            <button class="ui pink tiny icon button" role="button" aria-label="Close">
+                                <i aria-hidden="true" class="fa fa-times"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="course-item">ECON-1 :
-                        <div class="course-list-options"><button class="ui grey tiny button" role="button">Sections</button><button class="ui pink tiny icon button" role="button"><i aria-hidden="true"
-									class="close icon"></i></button></div>
+                        <div class="course-list-options"><button class="ui grey tiny button" role="button">Sections</button><button class="ui pink tiny icon button" role="button" aria-label="Close"><i aria-hidden="true"
+									class="fa fa-times"></i></button></div>
                     </div>
                     <div class="course-item">CSE-185 :
-                        <div class="course-list-options"><button class="ui grey tiny button" role="button">Sections</button><button class="ui pink tiny icon button" role="button"><i aria-hidden="true"
-									class="close icon"></i></button></div>
+                        <div class="course-list-options"><button class="ui grey tiny button" role="button">Sections</button><button class="ui pink tiny icon button" role="button" aria-label="Close"><i aria-hidden="true"
+									class="fa fa-times"></i></button></div>
                     </div>
                 </div>
                 <button class="ui olive fluid button" role="button" style="margin-top: 10px; text-align: center;">Register</button>
@@ -81,11 +85,17 @@
             </div>
             <div class="column-calendar">
                 <div class="schedule-button-controls" style="">
-                    <div class="ui buttons"><button class="ui grey icon button" role="button"><i aria-hidden="true"
-								class="arrow left icon"></i></button><button class="ui black disabled button" disabled="" role="button" tabindex="-1">
-							<div style="color: white;">1 / 15</div>
-						</button><button class="ui grey icon button" role="button"><i aria-hidden="true"
-								class="arrow right icon"></i></button></div>
+                    <div class="ui buttons">
+                        <button class="ui grey icon button" role="button">
+                            <i aria-hidden="true" class="fa fa-arrow-left"></i>
+                        </button>
+                        <button class="ui black disabled button" disabled="" role="button" tabindex="-1">
+                                <div style="color: white;">1 / 15</div>
+                        </button>
+                        <button class="ui grey icon button" role="button">
+                            <i aria-hidden="true" class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="schedule-column">
                     <div class="schedule-inside-container">
