@@ -81,26 +81,15 @@ def main():
         for ele in values:
             preReqs = COURSE_REGEX_PATTERN.findall(ele.text)
 
-            for pReq in preReqs and pReq not in pr:
-                pr.append(pReq)
-
-        # print("")
+            for pReq in preReqs:
+                if pReq not in pr:
+                    pr.append(pReq)
 
         while len(cs) < 4:
             cs.append("null")
 
         while len(pr) < 5:
             pr.append("null")
-
-        # for i in cs:
-        #     print(i)
-
-        # print("")
-
-        # for i in pr:
-        #     print(i)
-
-        # print("")
 
         sql = f"""insert into RegistrationPage_requirments (cs1, cs2, cs3, cs4, pr1, pr2, pr3, pr4, pr5, course_id)
                   values ('{cs[0]}', '{cs[1]}', '{cs[2]}', '{cs[3]}', '{pr[0]}', '{pr[1]}', '{pr[2]}', '{pr[3]}', '{pr[4]}', '{crn_text}')"""
@@ -115,6 +104,8 @@ def main():
         driver.switch_to_window(driver.window_handles[0])
 
     driver.quit()
+
+    print("Requirement Scalping Complete.")
 
 def reqTest():
     url = "https://mystudentrecord.ucmerced.edu/pls/PROD/xhwschedule.P_ViewCrnDetail?subjcode=ANTH&crsenumb=003&validterm=202110&crn=10158"

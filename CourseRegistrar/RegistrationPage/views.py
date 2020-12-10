@@ -70,8 +70,8 @@ def index(request):
             class_standing = YEAR_IN_SCHOOL_CHOICES[randint(0,4)]
             phone_number = "XXX-XXX-XXXX"
 
-            cur.execute(f"""insert into RegistrationPage_student( Student_ID, Password, Username, Class_Standing, Phone_Number)
-                            values ({student_id}, '{password}', '{username}', '{class_standing}', '{phone_number}');""")
+            cur.execute(f"""insert into RegistrationPage_student( Student_ID, Password, Username, Class_Standing, Phone_Number, Academic_Probation_Hold)
+                            values ({student_id}, '{password}', '{username}', '{class_standing}', '{phone_number}', 0);""")
 
             print(f"Successfully added {username} to Students")
 
@@ -122,7 +122,13 @@ def reg_for(request):
         a = request.GET.values()
         course_nums = list(a)
         
-        student_ID = course_nums[-1]
+        student_ID = None
+
+        try:
+            student_ID = course_nums[-1]
+        except IndexError:
+            return JsonResponse("Login", safe = False, status = 200)
+        
         course_crns = []
 
         for num in course_nums[:-1]:
@@ -137,7 +143,7 @@ def reg_for(request):
     else:
         print("do otherthing")
 
-    return JsonResponse(1, safe = False, status = 200)
+    return JsonResponse("Success", safe = False, status = 200)
 # find crns for course passed through reg_for
 def f_crn(course_number):
     database = f"db.sqlite3"

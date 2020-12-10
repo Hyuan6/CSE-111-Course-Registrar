@@ -1,19 +1,18 @@
+$(document).ready(function() {
 
-$(document).ready(function(){
-    
     var sid = getcookie("student_id")
     console.log(sid)
 
     function getcookie(name = '') {
         let cookies = document.cookie;
         let cookiestore = {};
-        
+
         cookies = cookies.split(";");
-        
+
         if (cookies[0] == "" && cookies[0][0] == undefined) {
             return undefined;
         }
-        
+
         cookies.forEach(function(cookie) {
             cookie = cookie.split(/=(.+)/);
             if (cookie[0].substr(0, 1) == ' ') {
@@ -21,15 +20,15 @@ $(document).ready(function(){
             }
             cookiestore[cookie[0]] = cookie[1];
         });
-        
+
         return (name !== '' ? cookiestore[name] : cookiestore);
     }
-    
-    $("#submit").click(function(){
+
+    $("#submit").click(function() {
         var cl = document.getElementsByClassName("course-item");
         var classes = [];
         var i;
-        console.log(cl.length)
+        console.log(classes)
         for (i = 0; i < cl.length; i++) {
             var count = i;
             classes.push({
@@ -39,13 +38,17 @@ $(document).ready(function(){
         console.log(classes);
         $.ajax({
             type: 'GET',
-            url:"/CourseReg/register/", 
-            data:{
-                classes, sid
+            url: "/CourseReg/register/",
+            data: {
+                classes,
+                sid
             },
             success: function(data) {
-                alert("registered")
-                console.log("shits done");
+                if (data === "Login") {
+                    alert("Please log in before registering.")
+                } else if (data === "Success") {
+                    alert("Successfully Registered")
+                }
             },
             failure: function(data) {
                 alert("shits fucked");
@@ -77,7 +80,7 @@ $(document).ready(function(){
             type: 'GET',
             url: "/CourseReg/ajax/",
             async: false,
-            success: function(data){
+            success: function(data) {
                 items = data
             },
             failure: function(data) {
@@ -94,7 +97,7 @@ $(document).ready(function(){
         return existing_elements.includes(el);
     }
 
-    function something(){
+    function something() {
         console.log("test passed");
     }
 
@@ -110,7 +113,7 @@ $(document).ready(function(){
 
     
     var counter = 1;
-    var button_ids =[];
+    var button_ids = [];
     new autoComplete({
         data: {
             src: ac(),
@@ -123,7 +126,7 @@ $(document).ready(function(){
             if (!exists(feedback.selection.value)) {
                 var new_div = document.createElement("div")
                 new_div.className = "course-item"
-                // add buttons and inner div
+                    // add buttons and inner div
                 new_div.innerHTML = feedback.selection.value + " :<div class='course-list-options'><button class='ui grey tiny button' role='button'>Sections</button><button class='ui pink tiny icon button' role='button'><i onclick='something()' aria-hidden='true' class='fa fa-times'></i></button></div>"
                 button_ids.push(counter);
                 counter++
@@ -136,12 +139,57 @@ $(document).ready(function(){
 
         }
     });
-    $("i").click(function(){
+    $("i").click(function() {
         console.log("we here")
-        if(button_ids.includes(this.id)){
+        if (button_ids.includes(this.id)) {
             console.log("button: " + this.id)
             var elem = document.getElementById(this.id);
             elem.parentNode.removeChild(elem);
         }
     })
+
+    /*
+    Example Parameter:
+    (string) cnum = CSE-185-02L
+    (float) start = 11.5
+    (float) end = 13.5
+    (string) day = MWF
+    (any valid css color selection) color = rgb(255,255,255)
+    */
+    function placeOnTable(cnum, start, end, days, color) {
+        var dayMapping = {
+            "M": 0,
+            "T": 1,
+            "W": 2,
+            "R": 3,
+            "F": 4,
+        };
+
+        var spacingPer30Min = 22.25;
+        var topMultiplier = (start - 7) / 2;
+        var heightMultiplier = (end - start + 1) * 2;
+        var rgba = [color.slice(0, 3), 'a', color.slice(3)].join('');
+        rgba = [rgba.slice(0, -1), ', 0.5', rgba.slice(-1)].join('');
+
+        var dayList = days.split("");
+        dayList.forEach(function(day) {
+            var col = document.getElementsByClassName("days-col")[dayMapping[day]];
+
+            var new_div = document.createElement("div");
+            new_div.className = "hour-slot";
+            new_div.style = `width: 100%; 
+                             position: absolute; 
+                             z-index: 1; 
+                             top: ${spacingPer30Min*topMultiplier}px; 
+                             height: ${spacingPer30Min*heightMultiplier}px; 
+                             display: block; 
+                             border-radius: 5px; 
+                             cursor: pointer; 
+                             color: rgb(91, 91, 91); 
+                             border-left: 3px solid ${color}; 
+                             background: ${rgba};`;
+            new_div.innerHTML = `<div class="title" style="font-size: 14px;">${cnum}</div>`;
+            col.appendChild(new_div);
+        });
+    }
 });
