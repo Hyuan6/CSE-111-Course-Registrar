@@ -71,9 +71,10 @@ def index(request):
                                                              or cs3 = '{classStanding}' 
                                                              or cs4 = '{classStanding}'))"""
 
-                validCS = cur.execute(checkCSSQL).fetchone()
-
+                validCS = cur.execute(checkCSSQL).fetchone()[0]
+                # print(validCS)
                 if validCS != 1:
+                    print("Registration Failed: invalid class standing")
                     return response
 
                 checkPRSQL = f"""with baseTable as(
@@ -83,15 +84,16 @@ def index(request):
                                  )
                 
                                  select exists (select 1
-                                 from RegistrationPage_requirment
-                                 where course_id = '{crn}' and ((pr1 in baseTable or pr1 = null)
-                                                            and (pr2 in baseTable or pr2 = null)
-                                                            and (pr3 in baseTable or pr3 = null)
-                                                            and (pr4 in baseTable or pr4 = null)
-                                                            and (pr5 in baseTable or pr5 = null))"""
+                                 from RegistrationPage_requirments
+                                 where course_id = {crn} and ((pr1 in baseTable or pr1 = 'null')
+                                                            and (pr2 in baseTable or pr2 = 'null')
+                                                            and (pr3 in baseTable or pr3 = 'null')
+                                                            and (pr4 in baseTable or pr4 = 'null')
+                                                            and (pr5 in baseTable or pr5 = 'null')))"""
 
-                havePR = cur.execute(checkPRSQL).fetchone()
+                havePR = cur.execute(checkPRSQL).fetchone()[0]
                 if havePR != 1:
+                    print("Registration Failed: incomplete prerequisites")
                     return response
 
                 sql += f"({crn}, {student_id}, 'null'),"
