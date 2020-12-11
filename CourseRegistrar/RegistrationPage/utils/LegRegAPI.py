@@ -11,8 +11,8 @@ class LegacyRegistrationAPI:
 
         self.crns = crns #[1,2,3,4,5]
         self.student_ID = student_ID #0
-        self.port = 8001
-        self.url = f"http://192.168.1.144:{self.port}/LegReg/"
+        self.port = 8000
+        self.url = f"http://127.0.0.1:{self.port}/LegReg/"
 
     def start(self):
         self.driver = webdriver.Chrome(executable_path="chromedriver.exe", chrome_options=self.options)

@@ -81,8 +81,9 @@ def search_bar(request):
     if request.is_ajax and request.method == "GET":
         # print("hey this shit works")
         ans = autocomp_data()
-        
-        return JsonResponse(ans, safe = False, status = 200)
+        sel = req_prefs()
+        resp = [ans, sel]
+        return JsonResponse(resp , safe = False, status = 200)
     return JsonResponse({"shits not working":True}, status = 200)
 #query db for autocomplete info
 def autocomp_data():
@@ -92,9 +93,9 @@ def autocomp_data():
         try:
             sql = """select crn, cnum, title
                         from RegistrationPage_course
-                        where Actv = ? """
+                        where Actv = ? and Seats_avil != ?"""
             cur = conn.cursor()
-            cur.execute(sql, ("LECT", ))
+            cur.execute(sql, ("LECT","Closed" ))
             rows = cur.fetchall()
             response = []
             for row in rows:
@@ -167,6 +168,29 @@ def f_crn(course_number):
                         where cnum = ? """
             cur = conn.cursor()
             cur.execute(sql, (course_number, ))
+            rows = cur.fetchall()
+            return rows
+        except sqlite3.Error as e:
+            print(e)
+    conn.close()
+    return "crn not found!"
+
+def est_pref(request):
+    if request.is_ajax():
+        print("social cue")
+    print("we here")
+    return JsonResponse(1, safe=False, status=200)
+
+def req_prefs():
+    database = f"db.sqlite3"
+    conn = sqlite3.connect(database)
+    with conn:
+        try:
+            sql = """select crn
+                        from RegistrationPage_course
+                        """
+            cur = conn.cursor()
+            cur.execute(sql)
             rows = cur.fetchall()
             return rows
         except sqlite3.Error as e:
