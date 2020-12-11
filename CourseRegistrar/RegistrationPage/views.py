@@ -145,7 +145,7 @@ def reg_for(request):
         course_crns = []
 
         for num in course_nums[:-1]:
-            temp = f_crn(num)
+            temp = f_crn(num)[0]
             course_crns.append(temp)
 
         print(course_crns)
