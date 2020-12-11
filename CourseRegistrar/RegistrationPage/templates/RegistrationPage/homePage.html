@@ -33,7 +33,7 @@
                             <input id="passwordInput" name="password" placeholder="Password" class="form-control form-control-sm" type="password" required="">
                         </div>
                         <div class="form-group">
-                            <button name="crn-submit" type="submit" class="btn btn-primary btn-block" onclick="updatePage()">Login</button>
+                            <button name="crn-submit" type="submit" id="crn-submit" class="btn btn-primary btn-block" onclick="updatePage()">Login</button>
                         </div>
                         <div class="form-group">
                             <button name="sign-up" type="submit" class="btn btn-primary btn-block">Sign Up</button>
@@ -64,7 +64,7 @@
             <div class="container-fluid d-flex align-items-center">
                 <div class="row">
                     <div class="col-lg-7 col-md-10">
-                        <h1 class="display-2 text-white">Hello Admin</h1>
+                        <h1 class="display-2 text-white" id="welcome-user" style="min-width:150px;">Hello Admin</h1>
                         <p class="text-white mt-0 mb-5">This is the defualt user profile page. Here you can modify your user account information</p>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                         </div>
                         <div class="card-body pt-0 pt-md-4">
                             <div class="text-center" style="padding-top: 7em;">
-                                <h3>
+                                <h3 id="username-profile-panel">
                                     Admin<span class="font-weight-light">, 1970</span>
                                 </h3>
                                 <div class="h5 font-weight-300">
@@ -139,28 +139,28 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group focused">
-                                                <label class="form-control-label" for="input-first-name">Class Standing</label>
-                                                <input disabled type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Class Standing" value="Fr">
+                                                <label class="form-control-label" for="input-class-standing">Class Standing</label>
+                                                <input disabled type="text" id="input-class-standing" class="form-control form-control-alternative" placeholder="Class Standing" value="Fr">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group focused">
-                                                <label class="form-control-label" for="input-last-name">Phone Number</label>
-                                                <input disabled type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Phone Number" value="XXX-XXX-XXXX">
+                                                <label class="form-control-label" for="input-phone-number">Phone Number</label>
+                                                <input disabled type="text" id="input-phone-number" class="form-control form-control-alternative" placeholder="Phone Number" value="XXX-XXX-XXXX">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group focused">
-                                                <label class="form-control-label" for="input-first-name">Academic Probation</label>
-                                                <input disabled type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Academic Probation" value="None">
+                                                <label class="form-control-label" for="input-academic-probation">Academic Probation</label>
+                                                <input disabled type="text" id="input-academic-probation" class="form-control form-control-alternative" placeholder="Academic Probation" value="None">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group focused">
-                                                <label class="form-control-label" for="input-last-name">Holds</label>
-                                                <input disabled type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Holds" value="None">
+                                                <label class="form-control-label" for="input-holds">Holds</label>
+                                                <input disabled type="text" id="input-holds" class="form-control form-control-alternative" placeholder="Holds" value="None">
                                             </div>
                                         </div>
                                     </div>

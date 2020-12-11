@@ -104,6 +104,26 @@ def autocomp_data():
     conn.close()
     return response
 
+def student_profile(request):
+    database = f"db.sqlite3"
+    conn = openConnection(database)
+    cur = conn.cursor()
+
+    if request.is_ajax and request.method == "GET":
+        student_id = list(request.GET.items())[0][1]
+
+        sql = f"""select Username, Class_Standing, Phone_Number, Academic_Probation_Hold from RegistrationPage_student where Student_ID = {student_id}"""
+
+        val = cur.execute(sql).fetchall()[0]
+
+        res = []
+        for i in val:
+            res.append(i)
+            print(i)
+
+        return JsonResponse(res, safe = False, status = 200)
+    return JsonResponse({"oops":True}, status = 200)
+
 def gradPlan(request):
     return render(request, 'RegistrationPage/development.html')
 

@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 function updatePage() {
     var cookie = getcookie("student_id");
-    if (cookie == undefined) {
+    if (cookie == undefined) { //unsuccessful login
         document.getElementById("Main Banner").style = "display: block;";
         document.getElementById("User Profile").style = "display: none;";
     } else {
@@ -20,7 +20,37 @@ function updatePage() {
     }
 }
 
-function populateUserProfile(student_id = '') {}
+function populateUserProfile(student_id = '') {
+
+    $.ajax({
+        type: 'GET',
+        url: "/CourseReg/student_profile/",
+        data: { student_id },
+        success: function(data) {
+            var username = data[0];
+            var class_standing = data[1];
+            var phone_number = data[2];
+            if (data[3] == 1) {
+                var academic_probation = "Yes"
+            } else {
+                var academic_probation = "None";
+            }
+
+            document.getElementById("welcome-user").innerText = "Welcome " + username;
+            document.getElementById("username-profile-panel").innerText = username;
+            document.getElementById("input-username").value = username
+
+            document.getElementById("input-class-standing").value = class_standing;
+            document.getElementById("input-phone-number").value = phone_number;
+            document.getElementById("input-academic-probation").value = academic_probation;
+            document.getElementById("input-holds").value = academic_probation;
+        },
+        failure: function(data) {
+            console.log(data)
+
+        },
+    });
+}
 
 function getcookie(name = '') {
     let cookies = document.cookie;
