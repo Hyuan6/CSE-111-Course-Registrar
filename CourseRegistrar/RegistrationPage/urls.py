@@ -8,5 +8,6 @@ urlpatterns = [
     path('RegPage/', views.courseReg, name='RegPage'),
     path('GradPlan/', views.gradPlan, name='GradPlan'),
     path('ajax/', views.search_bar, name='tk'),
-    path('register/', views.reg_for, name='register')
+    path('register/', views.reg_for, name='register'),
+    path('pref/', views.est_pref,name='pref')
 ]

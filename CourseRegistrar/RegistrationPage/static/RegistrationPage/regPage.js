@@ -1,3 +1,4 @@
+var existing_elements = [];
 $(document).ready(function() {
 
     var sid = getcookie("student_id")
@@ -57,7 +58,36 @@ $(document).ready(function() {
     });
 
     $("#gen").click(function(){
+        var cl = document.getElementsByClassName("course-item");
+        var classes = [];
+        var i;
+        console.log(classes)
+        for (i = 0; i < cl.length; i++) {
+            var count = i;
+            classes.push({
+                [count]: cl[i].innerText.split('\n')[0].split(' ')[0]
+            })
+        }
         
+        console.log(classes);
+        $.ajax({
+            type: "GET",
+            url: "/CourseReg/pref/",
+            data:{
+                classes,
+                sid
+            },
+            success: function(data){
+                alert("generating")
+            },
+            failure: function(data){
+                alert("it didn't work")
+            },
+        });
+
+        placeOnTable('ANTH-003-01', 16.5, 17.75, 'MW', "rgb(255,255,0)");
+        placeOnTable('CSE-015-01', 9.5, 10.25, 'MW', "rgb(255,0,255)" )
+        placeOnTable('PHYS-008-01', 13.5, 14.75, 'TR', "rgb(0,255,255)")
     });
 
     var modal = document.getElementById("myModal");
@@ -76,30 +106,37 @@ $(document).ready(function() {
 
     function ac(){
         var rep = [];
+        var bool_ics = document.getElementById("fc").checked
+        var earl = document.getElementById("early")
+        var late = document.getElementById("late")
         $.ajax({
             type: 'GET',
             url: "/CourseReg/ajax/",
             async: false,
             success: function(data) {
-                items = data
+                items = data[0]
+                others = data[1]
             },
             failure: function(data) {
                 console.log(data)
                 
             },
         });
-        rep = items
+        if(bool_ics){
+            rep=others;
+        }
+        else{
+            rep=items;
+        }
         return rep;
     }
-    var existing_elements = [];
+    
 
     function exists(el) {
         return existing_elements.includes(el);
     }
 
-    function something() {
-        console.log("test passed");
-    }
+   
 
     $(".chb").change(function() {
         $(".chb").prop('checked', false);
@@ -124,29 +161,21 @@ $(document).ready(function() {
         searchEngine: "loose",
         onSelection: feedback => {
             if (!exists(feedback.selection.value)) {
-                var new_div = document.createElement("div")
-                new_div.className = "course-item"
+                var new_div = document.createElement("div");
+                new_div.id = counter + "i";
+                new_div.className = "course-item";
                     // add buttons and inner div
-                new_div.innerHTML = feedback.selection.value + " :<div class='course-list-options'><button class='ui grey tiny button' role='button'>Sections</button><button class='ui pink tiny icon button' role='button'><i onclick='something()' aria-hidden='true' class='fa fa-times'></i></button></div>"
+                new_div.innerHTML = feedback.selection.value + " :<div class='course-list-options'><button class='ui grey tiny button' role='button'>Sections</button><button class='ui pink tiny icon button' role='button'><i id = "+ counter +" onclick='something(this.id)' aria-hidden='true' class='fa fa-times'></i></button></div>";
                 button_ids.push(counter);
-                counter++
-                // $(i).attr('id', 'id' + counter++)
-                document.getElementById("selclasses").appendChild(new_div)
+                counter++;
+                document.getElementById("selclasses").appendChild(new_div);
                 existing_elements.push(feedback.selection.value);
             } else {
-                alert("already added")
+                alert("already added");
             }
 
         }
     });
-    $("i").click(function() {
-        console.log("we here")
-        if (button_ids.includes(this.id)) {
-            console.log("button: " + this.id)
-            var elem = document.getElementById(this.id);
-            elem.parentNode.removeChild(elem);
-        }
-    })
 
     /*
     Example Parameter:
@@ -166,7 +195,7 @@ $(document).ready(function() {
         };
 
         var spacingPer30Min = 22.25;
-        var topMultiplier = (start - 7) / 2;
+        var topMultiplier = (start - 7) * 2;
         var heightMultiplier = (end - start + 1) * 2;
         var rgba = [color.slice(0, 3), 'a', color.slice(3)].join('');
         rgba = [rgba.slice(0, -1), ', 0.5', rgba.slice(-1)].join('');
@@ -192,4 +221,20 @@ $(document).ready(function() {
             col.appendChild(new_div);
         });
     }
+    
 });
+
+function something(id) {
+    console.log("this is running")
+    var elem = document.getElementById(id + "i");
+    var todel = elem.innerText.split(' ')[0];
+    var i;
+    for(i=0; existing_elements.length; i++){
+        if(existing_elements[i] == todel){
+            existing_elements.splice(i, 1);
+        }
+    }
+    console.log(todel);
+    elem.parentNode.removeChild(elem);
+    console.log(existing_elements);
+}
